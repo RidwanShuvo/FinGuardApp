@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/bg">
+
+ <ScrollView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:gravity="center">
+
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="30dp"
+       android:layout_margin="10dp"
+       android:gravity="center"
+       android:text="FinGuard"
+       android:textSize="50sp"
+       android:textStyle="italic"
+       android:fontFamily="cursive"
+       android:textColor="@color/design_default_color_surface"/>
+
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_marginTop="200dp"
+       android:layout_height="40dp"
+       android:gravity="center"
+       android:text="Log In"
+       android:background="@color/cardview_shadow_start_color"
+       android:textSize="20sp"
+       android:textColor="@color/white"/>
+
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="10dp"
+       android:padding="15dp"
+       android:hint="Email:"
+       android:inputType="textEmailAddress"
+       android:id="@+id/email_login"
+       android:textColorHint="@color/white"
+       android:background="@color/cardview_shadow_start_color"
+       android:contentDescription="Email input"/>
+
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="10dp"
+       android:inputType="textPassword"
+       android:padding="15dp"
+       android:hint="Password:"
+       android:textColorHint="@color/white"
+       android:id="@+id/password_login"
+       android:background="@color/cardview_shadow_start_color"
+       android:contentDescription="Password input"/>
+
+   <ProgressBar
+       android:id="@+id/progressBar"
+       android:visibility="gone"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content" />
+
+   <Button
+       android:id="@+id/btn_login"
+       android:layout_width="match_parent"
+       android:layout_height="63dp"
+       android:layout_margin="10dp"
+       android:text="Log In"
+       android:textSize="18sp"/>
+
+   <TextView
+       android:id="@+id/forget_password"
+       android:layout_marginTop="10dp"
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:gravity="center"
+       android:padding="5dp"
+       android:text="Forget Password?"
+       android:textColor="@color/white"
+       android:background="@color/cardview_shadow_start_color"/>
+
+   <TextView
+       android:id="@+id/signup_reg"
+       android:layout_width="match_parent"
+       android:layout_height="75dp"
+       android:gravity="center"
+       android:padding="5dp"
+       android:text="Don't have an account? Sign up here."
+       android:textColor="@color/white"
+       android:background="@color/cardview_shadow_start_color"/>
+  </LinearLayout>
+
+ </ScrollView>
+
+</LinearLayout>

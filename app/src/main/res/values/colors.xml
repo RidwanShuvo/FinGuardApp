@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#85001C</color>
+    <color name="green">#10EE00</color>
+    <color name="dashboard_color">#85001CFF</color>
+    <color name="Income">#2A712210</color>
+    <color name="Expense">#FF6F0085</color>
+</resources>

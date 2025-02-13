@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "889266539151",
+    "project_id": "finguard-68adb",
+    "storage_bucket": "finguard-68adb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889266539151:android:15ef9829658078d3a73efa",
+        "android_client_info": {
+          "package_name": "com.example.finguard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZ78HIFfSMdXNRq0AVDmjqQXjGDpFVBqQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
