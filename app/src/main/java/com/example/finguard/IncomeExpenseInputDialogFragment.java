@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.finguard.models.Transaction;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,12 +23,12 @@ public class IncomeExpenseInputDialogFragment extends DialogFragment {
 
     private EditText etDate, etType, etAmount;
     private Button btnSave, btnCancel;
-    private String type;
+    private String category; // "Income" or "Expense"
 
-    public static IncomeExpenseInputDialogFragment newInstance(String type) {
+    public static IncomeExpenseInputDialogFragment newInstance(String category) {
         IncomeExpenseInputDialogFragment fragment = new IncomeExpenseInputDialogFragment();
         Bundle args = new Bundle();
-        args.putString("type", type);
+        args.putString("category", category);
         fragment.setArguments(args);
         return fragment;
     }
@@ -43,38 +44,52 @@ public class IncomeExpenseInputDialogFragment extends DialogFragment {
         btnSave = view.findViewById(R.id.btn_save);
         btnCancel = view.findViewById(R.id.btn_cancel);
 
-        type = getArguments().getString("type");
+        category = getArguments().getString("category"); // Get "Income" or "Expense"
 
         etDate.setOnClickListener(v -> showDatePickerDialog());
 
-        btnSave.setOnClickListener(v -> {
-            String date = etDate.getText().toString();
-            String type = etType.getText().toString();
-            String amountStr = etAmount.getText().toString();
-
-            if (date.isEmpty() || type.isEmpty() || amountStr.isEmpty()) {
-                Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            double amount = Double.parseDouble(amountStr);
-            String key = FirebaseDatabase.getInstance().getReference("transactions").push().getKey();
-
-            Transaction transaction = new Transaction(key, date, type, amount);
-            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("transactions");
-            databaseReference.child(key).setValue(transaction).addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    dismiss();
-                } else {
-                    Toast.makeText(getContext(), "Failed to save data", Toast.LENGTH_SHORT).show();
-                }
-            });
-        });
+        btnSave.setOnClickListener(v -> saveTransaction());
 
         btnCancel.setOnClickListener(v -> dismiss());
 
         return view;
     }
+
+    private void saveTransaction() {
+        String date = etDate.getText().toString().trim();
+        String type = etType.getText().toString().trim();
+        String amountStr = etAmount.getText().toString().trim();
+
+        if (date.isEmpty() || type.isEmpty() || amountStr.isEmpty()) {
+            Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        double amount = Double.parseDouble(amountStr);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(category);
+        String key = databaseReference.push().getKey();
+
+        if (key == null) {
+            Toast.makeText(getContext(), "Failed to generate transaction ID", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Transaction transaction = new Transaction(key, date, type, amount);
+
+        databaseReference.child(key).setValue(transaction)
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(getContext(), category + " transaction added!", Toast.LENGTH_SHORT).show();
+                    dismiss();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(getContext(), "Firebase Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                });
+
+        // 🔍 Debug Log
+        System.out.println("Transaction Data → Category: " + category + ", Date: " + date + ", Type: " + type + ", Amount: " + amount);
+    }
+
+
 
     private void showDatePickerDialog() {
         Calendar calendar = Calendar.getInstance();

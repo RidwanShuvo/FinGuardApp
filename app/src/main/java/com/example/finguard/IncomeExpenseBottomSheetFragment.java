@@ -24,17 +24,15 @@ public class IncomeExpenseBottomSheetFragment extends BottomSheetDialogFragment 
         btnExpense = view.findViewById(R.id.btn_expense);
 
         btnIncome.setOnClickListener(v -> {
-            // Open Income Input Dialog
+            dismiss(); // Close the bottom sheet before opening dialog
             IncomeExpenseInputDialogFragment inputDialog = IncomeExpenseInputDialogFragment.newInstance("Income");
             inputDialog.show(getParentFragmentManager(), "IncomeInputDialog");
-            dismiss();
         });
 
         btnExpense.setOnClickListener(v -> {
-            // Open Expense Input Dialog
+            dismiss(); // Close the bottom sheet before opening dialog
             IncomeExpenseInputDialogFragment inputDialog = IncomeExpenseInputDialogFragment.newInstance("Expense");
             inputDialog.show(getParentFragmentManager(), "ExpenseInputDialog");
-            dismiss();
         });
 
         return view;

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegistrationActivity"
-    android:background="@drawable/pxfuel">
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,40 +22,43 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_margin="10dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="cursive"
                 android:gravity="center"
                 android:text="FinGuard"
+                android:textColor="@color/black"
                 android:textSize="50sp"
-                android:textStyle="italic"
-                android:fontFamily="cursive"
-                android:textColor="@color/design_default_color_surface"/>
+                android:textStyle="italic" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="Registration"
-                android:layout_marginTop="200dp"
+                android:layout_marginTop="150dp"
                 android:gravity="center"
+                android:padding="16dp"
+                android:text="Registration"
+                android:textColor="@color/black"
                 android:textSize="24sp"
-                android:background="@color/white"
-                android:padding="16dp"/>
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/email_reg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
-                android:textColorHint="@color/white"
-                android:padding="10dp"/>
+                android:background="@color/cardview_shadow_start_color"
+                android:padding="10dp"
+                android:textColorHint="@color/black" />
 
             <EditText
                 android:id="@+id/password_reg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
-                android:textColorHint="@color/white"
+                android:layout_margin="7dp"
+                android:background="@color/cardview_shadow_start_color"
+                android:textColorHint="@color/black"
                 android:inputType="textPassword"
                 android:padding="10dp"/>
             

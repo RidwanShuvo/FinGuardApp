@@ -1,4 +1,4 @@
-package com.example.finguard;
+package com.example.finguard.models;
 
 public class Transaction {
     private String id;
